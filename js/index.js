@@ -2,6 +2,7 @@
 
 console.log(window.innerWidth);
 
+
 /*Обрабатываем поле ввода цена изданий - добавляем маску и проверяем на соответствие цен (цена от не больше цены до)*/
 
 function dischargeFrom(){
@@ -32,6 +33,17 @@ dischargeTo();
 $('#price-to').keyup(function(){
   dischargeTo();
 });
+
+
+/*Бургер*/
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelector(".header__burger").addEventListener('click', function(burgerClick){
+    burgerClick.currentTarget.classList.toggle('header__burger_active');
+    document.querySelector('.nav__list').classList.toggle('nav__list_active');
+    document.querySelector('.header-wrap').classList.toggle('header-wrap-active');
+  })
+});
+
 
 //Выпадающие дроплисты
 document.addEventListener("DOMContentLoaded", function() {
@@ -164,6 +176,7 @@ const choices = new Choices(element, {
         var link = img.getAttribute("src");
         const path = cl.currentTarget.dataset.pantdescr;
         modal.classList.add("modal-active");
+        modalBtn.focus();
         modal.querySelector("img").setAttribute("src", link);
         document.querySelectorAll('.modal__content-descritpion-block').forEach(function(descrChange) {
           descrChange.classList.remove('modal__content-descritpion-block-active');
@@ -177,9 +190,13 @@ const choices = new Choices(element, {
       }
       )
 
-      //Отлавливаем закрытие окна с помощью клавиатуры
+
+      //Отлавливаем открытие/закрытие окна с помощью клавиатуры
     swiperSlides.forEach(el =>
+    //Отлавливаем нажатие Enter или Space
       el.addEventListener("keydown", function(cl){
+        const p = `${cl.key}`;
+        if (p==="Enter"||p===" ") {
         var img=this.querySelector("img");
         var link = img.getAttribute("src");
         const path = cl.currentTarget.dataset.pantdescr;
@@ -189,19 +206,14 @@ const choices = new Choices(element, {
         document.querySelectorAll('.modal__content-descritpion-block').forEach(function(descrChange) {
           descrChange.classList.remove('modal__content-descritpion-block-active');
           document.querySelector(`[data-ptarget="${path}"]`).classList.add('modal__content-descritpion-block-active');
-          console.log(path);
         }
         )
-
-      }))
+      }
+    }))
       modalBtn.addEventListener("keydown", function() {
         modal.classList.remove("modal-active");
       }
      )
-      //modal.addEventListener("keydown", function() {
-        //modal.classList.remove("modal-active");
-      //}
-      //)
   });
 
   //Аккордеон
@@ -255,10 +267,12 @@ const choices = new Choices(element, {
   let swiperslider = document.querySelectorAll(".list-item");
   //console.log(swiperslider);
   btn.addEventListener("click", function(){
+
     swiperslider.forEach(el => {
       el.style.display="flex"
     })
     this.style.display="none";
+
   })
 
 
@@ -266,7 +280,8 @@ const choices = new Choices(element, {
 
 
 function mobileSlider() {
-    if (window.innerWidth <= 999 && slider.dataset.mobile == 'false') {
+    if (window.innerWidth <= 576 && slider.dataset.mobile == 'false') {
+      console.log("swiper events started");
       mySwiper = new Swiper(slider, {
         slidesPerView: 1,
         spaceBetween: 10,
@@ -281,7 +296,7 @@ function mobileSlider() {
       slider.dataset.mobile = 'true';
     }
 
-    if (window.innerWidth > 999 && slider.dataset.mobile == 'true') {
+    if (window.innerWidth > 576 && slider.dataset.mobile == 'true') {
       slider.dataset.mobile = 'false';
       if (slider.classList.contains('swiper-initialized')) {
         mySwiper.destroy();
@@ -312,7 +327,7 @@ function mobileSlider() {
 
       // If we need pagination
       pagination: {
-        el: '.pb-swiper__pagination',
+        el: '.pb-swiper-container__pagination',
         type: 'fraction'
       },
       focusableElements:'.pb-slide',
@@ -351,8 +366,8 @@ function mobileSlider() {
 
       // Navigation arrows
       navigation: {
-        nextEl: '.pb-swiper__button-next',
-        prevEl: '.pb-swiper__button-prev',
+        nextEl: '.pb-swiper-container__button-next',
+        prevEl: '.pb-swiper-container__button-prev',
       },
 
       a11y: {
@@ -366,6 +381,15 @@ function mobileSlider() {
 
   })
 });
+
+/*Тултипы*/
+
+(() => {
+  tippy('.js-tooltip-btn', {
+    theme: 'blanchard',
+    maxWidth: 264,
+  });
+})();
 
 /*свайпер проектов*/
 
