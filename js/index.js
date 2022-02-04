@@ -222,6 +222,10 @@ const choices = new Choices(element, {
             document.querySelector(`[data-ptarget="${path}"]`).classList.add('modal__content-descritpion-block-active');
           }
           )
+          window.addEventListener('resize', function(){
+            modal.classList.remove("modal-active");
+          })
+
           modalBtn.addEventListener("click", function() {
             modal.classList.remove("modal-active");
           })
@@ -708,6 +712,7 @@ function mobileSlider() {
     searchInput.classList.remove("search-form__input_active");//возвращаю поле ввода в неактивное состояние
     btnClose.classList.add("element-hidden"); //Скрываю кнопку закрытия (если при открытом окне поиска планшет повернули)
     logo.classList.remove("element-hidden");//Лого показываем
+    burger.classList.remove("element-hidden");
     btnOpen.style.visibility="visible";
     //console.log ("1200 var set");
     btnOpen.addEventListener("click", function(){
@@ -735,11 +740,12 @@ function mobileSlider() {
     searchInput.setAttribute("placeholder", "") //Убираю placeholder
     searchForm.classList.remove("header__search-form_active"); //возвращаю форму в неактивное состояние
     searchInput.classList.remove("search-form__input_active");//возвращаю поле ввода в неактивное состояние
-    burger.classList.remove("header__burger_active"); //возвращаю бургер в неактивное состояне
+    //burger.classList.remove("header__burger_active"); //возвращаю бургер в неактивное состояне
     burger.classList.remove("element-hidden"); //возвращаю бургер в неактивное состояне
     logo.classList.remove("element-hidden");//Лого показываем
     burger.style.zIndex="3";
     btnOpen.style.visibility="visible";
+    btnClose.classList.add("element-hidden");
     btnOpen.addEventListener("click", function() {
 
       if (innerWidth <= 576) {
