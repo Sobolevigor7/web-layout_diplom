@@ -1295,6 +1295,7 @@ button {
   align-items: center;
   display: none;
   height: 100%;
+  overflow: auto;
 }
 
 
@@ -1341,6 +1342,7 @@ button {
 .modal.modal-active {
   display: flex;
 }
+
 
 .modal__content {
   max-width: 900px;
@@ -1403,7 +1405,10 @@ button {
 .catalogue__header, .countries-selector {
   display: flex;
   align-items: center;
+}
 
+.countries-selector {
+  padding-top: 7px;
 }
 
 .catalogue__header {
@@ -1411,18 +1416,13 @@ button {
 }
 
 .catalogue__header-text {
-  margin-right: 31px;
+  margin-right: 40px;
 }
 
 .countries-selector__country:not(:last-child) {
-  margin-right: 32px;
+  margin-right: 50px;
 }
 
-.countries-selector__country-btn {
-  background-color: transparent;
-  background-repeat: no-repeat;
-  padding: 32px;
-}
 
 .france {
   background-image: url("../img/flag1.png");
@@ -1466,16 +1466,35 @@ button {
 
 .countries-selector__country-btn {
   border-radius: 100%;
-  transition-property: border-color, box-shadow;
+  transition-property: box-shadow, border-color;
   transition-duration: .3s;
   transition-timing-function: ease-in-out;
-  padding: 30px;
+  padding: 0;
   background-position: center;
   border: 2px solid transparent;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  width: 46px;
+  height: 46px;
+  position: relative;
 }
 
-.countries-selector__country-btn-active {
-  /*outline: 2px solid var(--color-button-active);*/
+.countries-selector__country-btn::after {
+  content: "";
+  position: absolute;
+  border: 2px solid transparent;
+  width: 66px;
+  height: 66px;
+  border-radius: 100%;
+  top: -30%;
+  left: -30%;
+  transition-property: border-color;
+  transition-duration: .3s;
+  transition-timing-function: ease-in-out;
+}
+
+
+.countries-selector__country-btn-active::after {
   border-color: var(--color-button-active);
 }
 
@@ -1485,7 +1504,7 @@ button {
 }
 
 .countries-selector__country-btn:active {
-  border: 2px solid var(--color-button-active);
+  border-color: var(--color-button-active);
 }
 
 
@@ -2146,6 +2165,7 @@ button {
   background: transparent;
   padding: 0;
   vertical-align: middle;
+  padding-top: 7px;
 }
 
 .projects__article-text-tooltip-img #path1, .projects__article-text-tooltip-img #path2, .projects__article-text-tooltip-img #path3 {
@@ -2793,19 +2813,15 @@ div [class*=ground-pane] {
   /*Каталог*/
 
   .catalogue__header-text {
-    margin-right: 34px;
+    margin-right: 42px;
   }
 
   .catalogue__header {
-    margin-bottom: 9px;
+    margin-bottom: 15px;
   }
 
-  /*.catalogue__header, .countries-selector {
-    align-items: end;
-  }*/
-
   .countries-selector {
-    padding-top: 10px;
+    padding-top: 20px;
   }
 
   .paintors__card-img {
@@ -3115,6 +3131,10 @@ div [class*=ground-pane] {
     height: 280px;
   }
 
+  .choices .choices__list--dropdown {
+    background-color: var(--color-black);
+  }
+
   /*Каталог*/
 
   .catalogue {
@@ -3123,16 +3143,17 @@ div [class*=ground-pane] {
 
   .catalogue__header {
     align-items: flex-start;
-    margin-bottom: 11px;
+    margin-bottom: 16px;
   }
 
   .countries-selector {
-    width: calc(100% - 220px);
-    padding-top: 0;
+    /*width: calc(100% - 220px);*/
+    width: 100%;
+    padding-top: 5px;
   }
 
   .countries-selector__country:not(:last-child) {
-    margin-right: clamp(15px, calc(100% - 400px), 34px);
+    margin-right: clamp(15px, calc(100% - 380px), 54px);
   }
 
   .countries-selector__country {
@@ -3140,7 +3161,7 @@ div [class*=ground-pane] {
   }
 
   .catalogue__header-text {
-    margin-right: clamp(15px, calc(100% - 550px), 34px);
+    margin-right: clamp(15px, calc(100% - 550px), 40px);
   }
 
   .catalogue__tab-active {
@@ -3387,6 +3408,8 @@ and (height: 412px) {
 }
 
 
+
+
 @media(max-width: 576px) {
 
   .container {
@@ -3432,10 +3455,6 @@ and (height: 412px) {
   }
 
 
-  /*.small-button, .small-button__icon {
-    height: 18px;
-    width: 18px;
-  }*/
 
   .header__burger-span {
     height: 2px;
@@ -3592,12 +3611,12 @@ and (height: 412px) {
 
   .gallery__filter-choices {
     max-width: 100%;
-
   }
 
   .choices__list--single {
     padding: 0px 12px 1px 12px;
   }
+
 
   .gly-slide {
     height: 367px;
@@ -3675,7 +3694,7 @@ and (height: 412px) {
 
   .catalogue__header {
     flex-direction: column;
-    margin-bottom: 15px;
+    margin-bottom: 21px;
   }
 
   .catalogue__header-text {
@@ -3710,16 +3729,25 @@ and (height: 412px) {
   }
 
   .countries-selector__country-btn {
-    padding: 21px;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+  }
+
+  .countries-selector__country-btn::after {
+    width: 45px;
+    height: 45px;
+    top: -30%;
+    left: -30%;
   }
 
   .countries-selector {
     width: 100%;
-    margin-left: -7px;
+    padding-top: 5px;
   }
 
   .countries-selector__country:not(:last-child) {
-    margin-right: clamp(5px, 7vw, 19px);
+    margin-right: clamp(5px, 10vw, 32px);
   }
 
   .catalogue__description {
@@ -3854,7 +3882,7 @@ and (height: 412px) {
 
   .publications {
     padding-top: 19px;
-    padding-bottom: 25px;
+    padding-bottom: 28px;
   }
 
   .publications__container {
@@ -3965,14 +3993,10 @@ and (height: 412px) {
     display: none;
   }
 
-  /*.pb-slide__img {
-    height: 100%;
-    width: 100%;
-  }*/
+
 
   .pb-swiper__wrapper .pb-slide .pb-slide__img {
-    /*max-width: auto;
-    max-height: auto;*/
+
     height: auto;
   }
 
@@ -4039,7 +4063,7 @@ and (height: 412px) {
 
   .projects__article-text {
     width: 102%;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .projects__partners-header {
@@ -4196,17 +4220,17 @@ and (height: 412px) {
     order: 1;
   }
 
+}
 
+/*iphone 4*/
 
+@media only screen
+and (max-width: 320px)
+and (max-height: 480px) {
+  .modal__content-description-closebtn {
 
-
-
-
-
-
-
-
-
+    top: -144px;
+  }
 }
 
 

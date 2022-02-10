@@ -215,6 +215,7 @@ const choices = new Choices(element, {
           }
 
           modal.classList.add("modal-active");
+          document.querySelector("body").style.overflow="hidden";
           modalBtn.focus();
           modal.querySelector("img").setAttribute("src", link);
           document.querySelectorAll('.modal__content-descritpion-block').forEach(function(descrChange) {
@@ -224,10 +225,12 @@ const choices = new Choices(element, {
           )
           window.addEventListener('resize', function(){
             modal.classList.remove("modal-active");
+            document.querySelector("body").style.overflow="visible";
           })
 
           modalBtn.addEventListener("click", function() {
             modal.classList.remove("modal-active");
+            document.querySelector("body").style.overflow="visible";
           })
         }
        })
@@ -246,6 +249,7 @@ const choices = new Choices(element, {
         const path = cl.currentTarget.dataset.pantdescr;
         if (path != "none") { //Если есть контент для модального окна.
         modal.classList.add("modal-active");
+        document.querySelector("body").style.overflow="hidden";
         modal.focus();
         modal.querySelector("img").setAttribute("src", link);
         document.querySelectorAll('.modal__content-descritpion-block').forEach(function(descrChange) {
@@ -257,9 +261,11 @@ const choices = new Choices(element, {
     }));
       modalBtn.addEventListener("keydown", function() {
         modal.classList.remove("modal-active");
+        document.querySelector("body").style.overflow="visible";
       });
       modalBtn.addEventListener("click", function() {
         modal.classList.remove("modal-active");
+        document.querySelector("body").style.overflow="visible";
       })
     });
 
