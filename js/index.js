@@ -800,7 +800,7 @@ function mobileSlider() {
   //Плавный скролл.
 
 $(document).ready(function(){
-  $("a").on('click', function(event) {
+  $(".link").on('click', function(event) {
     function getWindowWidth () {
       return Math.max(
         document.body.scrollWidth,
@@ -832,7 +832,9 @@ $(document).ready(function(){
       event.preventDefault();
       var hash = this.hash;
       $('html, body').animate({
+        //scrollTop: $(hash).offset().top
         scrollTop: $(hash).offset().top
+        //"scrollTop": "0" }, 600);
       }, 800, function(){
         window.location.hash = hash;
       });
