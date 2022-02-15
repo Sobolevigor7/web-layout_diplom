@@ -2498,6 +2498,7 @@ button {
 
 .contacts__form-connect-link {
   transition: opacity .3s ease-in-out;
+  text-decoration: none;
 }
 
 .contacts__form-connect-link:hover, .contacts__form-connect-link:focus-visible {
@@ -2507,13 +2508,21 @@ button {
 }
 
 .contacts__form-connect-link-img {
-  border-radius: 50%;
-  outline-offset: -1px;
-  transition: outline .1s ease-in-out;
+  border-radius: 100%;
+  /*outline-offset: -1px;
+  transition: outline .1s ease-in-out;*/
+  border: 1px solid transparent;
+  transition: border-color .1s ease-in-out;
 }
 
 .contacts__form-connect-link:active .contacts__form-connect-link-img {
-  outline: 2px solid var(--color-social-active);
+  /*outline: 2px solid var(--color-social-active);*/
+  border-color: var(--color-social-active);
+}
+
+.contacts__form-connect-link:active {
+  text-decoration: none;
+  text-decoration-color: transparent;
 }
 
 /*Yandex maps*/
